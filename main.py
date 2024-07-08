@@ -31,7 +31,7 @@ class WeatherPlugin(BasePlugin):
         #今天|明天|后天|大后天|一天后|两天后|三天后|四天后|五天后|1天后|2天后|3天后|4天后|5天后|6天后
 
         # 定义正则表达式模式，匹配形如 城市:xxx 的字符串
-        CITY_PATTERN = re.compile(r"城市:(.*?)(今天|明天|后天|大后天|一天后|两天后|三天后|四天后|五天后|1天后|2天后|3天后|4天后|5天后|6天后)的天气情况")
+        CITY_PATTERN = re.compile(r"城市:(.*?)(今天|明天|后天|大后天|一天后|两天后|三天后|四天后|五天后|六天后|1天后|2天后|3天后|4天后|5天后|6天后)的天气情况")
         #TIME_PATTERN = re.compile(r"为你查询城市：\w+([^天]+)天的天气情况")
 
         match = CITY_PATTERN.search(response_text)

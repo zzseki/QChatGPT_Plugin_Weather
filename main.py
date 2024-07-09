@@ -21,7 +21,7 @@ class WeatherPlugin(BasePlugin):
 
     # 插件加载时触发
     def __init__(self, host: APIHost):
-        self.token = "YOUR_TOKEN"  # 请将这里的'YOUR_TOKEN'替换为你实际获取的token
+        self.token = "Zgv6hD2FyDYrPGGF"  # 请将这里的'YOUR_TOKEN'替换为你实际获取的token
         self.logger = logging.getLogger(__name__)
 
 
@@ -35,45 +35,42 @@ class WeatherPlugin(BasePlugin):
         #TIME_PATTERN = re.compile(r"为你查询城市：\w+([^天]+)天的天气情况")
 
         match = CITY_PATTERN.search(response_text)
-
-        if match.group(2) == "今天" or match.group(2) == "0" or match.group(2) == "零":
-            W_time = 0  # 0表示当天的天气，1表示明天的天气，以此类推最高查询七天
-
-
-
-        elif match.group(2) == "明天" or match.group(2) == "1天后" or match.group(2) == "一天后":
-            W_time = 1
-
-
-        elif match.group(2) == "后天" or match.group(2) == "2天后" or match.group(2) == "二天后" or match.group(2) == "两天后":
-            W_time = 2
-
-
-        elif match.group(2) == "大后天" or match.group(2) == "3天后" or match.group(2) == "三天后":
-            W_time = 3
-
-
-        elif match.group(2) == "大大后天" or match.group(2) == "4天后" or match.group(2) == "四天后":
-            W_time = 4
-
-
-        elif match.group(2) == "大大大后天" or match.group(2) == "5天后" or match.group(2) == "五天后":
-            W_time = 5
-
-
-        elif match.group(2) == "大大大大后天" or match.group(2) == "6天后" or match.group(2) == "六天后":
-            W_time = 6
-
-        else:
-            W_time = 0
+        # 如果找到匹配的字符串，则处理
+        if match:
+            if match.group(2) == "今天" or match.group(2) == "0" or match.group(2) == "零":
+                W_time = 0  # 0表示当天的天气，1表示明天的天气，以此类推最高查询七天
 
 
 
+            elif match.group(2) == "明天" or match.group(2) == "1天后" or match.group(2) == "一天后":
+                W_time = 1
 
 
+            elif match.group(2) == "后天" or match.group(2) == "2天后" or match.group(2) == "二天后" or match.group(
+                    2) == "两天后":
+                W_time = 2
+
+
+            elif match.group(2) == "大后天" or match.group(2) == "3天后" or match.group(2) == "三天后":
+                W_time = 3
+
+
+            elif match.group(2) == "大大后天" or match.group(2) == "4天后" or match.group(2) == "四天后":
+                W_time = 4
+
+
+            elif match.group(2) == "大大大后天" or match.group(2) == "5天后" or match.group(2) == "五天后":
+                W_time = 5
+
+
+            elif match.group(2) == "大大大大后天" or match.group(2) == "6天后" or match.group(2) == "六天后":
+                W_time = 6
+
+            else:
+                W_time = 0
 
         # 如果找到匹配的字符串，则处理
-        if match.group(1):
+        if match:
             city = match.group(1)
 
             #for city in match.group(1):

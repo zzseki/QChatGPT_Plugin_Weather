@@ -16,7 +16,7 @@ import logging
 # 注册插件
 
 
-@register(name="weather", description="Weather", version="0.1", author="RockChinQ")
+@register(name="weather", description="Weather", version="0.1", author="zzseki")
 class WeatherPlugin(BasePlugin):
 
     # 插件加载时触发
